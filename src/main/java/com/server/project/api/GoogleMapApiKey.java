@@ -1,23 +1,66 @@
 package com.server.project.api;
 
-public class GoogleMapApiKey {
-	private static String key_01;
-	private static String key_02;
-	private static String key_03;
-	private static String key_04;
-	private static String key_05;
-	private static String key_06;
-	private static String key_07;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
-	public static String getKey() {
-		key_01 = "AIzaSyAaIF4MXLuGjy73dsjt14S1q0GWrEhKulI";
-		key_02 = "AIzaSyCTf-EOfKRUDHzlu7c8d6kF-JQzKQ4KEmM";
-		key_03 = "AIzaSyAHOz_IiWgfQJi_g6l4eJ0FfoIQhifNB60";
-		key_04 = "AIzaSyC0UDHmj4cb_y9_gfl0jo2sR2_CJEWkdAI";
-		key_05 = "AIzaSyCpmjn5pIxY8D0Vtp1EnQBO1qpwqCaAAFw";
-		key_06 = "AIzaSyC1WpZXX2fiakL24PnjgZuyIOaHdw02KVY";
-		key_07 = "AIzaSyBN5SOoFNWU51XaZtwYX6bVkVvstMMLdA4";
-		return key_07;
+public class GoogleMapApiKey {
+	public static void main(String[] args) throws Exception {
+		String key = GoogleMapApiKey.getKey();
+		System.out.println(key);
+	}
+
+	public static String getKey() throws Exception {
+		int id;
+		String key = null;
+		int times;
+		// connect DB
+		Class.forName("org.postgresql.Driver").newInstance();
+		String url = "jdbc:postgresql://140.119.19.33:5432/project";
+		Connection con = DriverManager.getConnection(url, "postgres", "093622");
+		Statement selectST = con.createStatement();
+		Statement getCountST = con.createStatement();
+		Statement updateST = con.createStatement();
+
+		String selectSQL = "select * from googlemap where selected='here';";
+		ResultSet selectRS = selectST.executeQuery(selectSQL);
+		while (selectRS.next()) {
+			key = selectRS.getString("key");
+			times = selectRS.getInt("times") + 1;
+			id = selectRS.getInt("id");
+
+			if (times >= 3000) {
+				int count = 0;
+				String getCountSQL = "select count(id) from googlemap;";
+				ResultSet getCountRS = getCountST.executeQuery(getCountSQL);
+				while (getCountRS.next()) {
+					count = getCountRS.getInt("count");
+				}
+				if (id == count) {
+					String changeSQL = "update googlemap set selected='', times =0 where id=" + id + ";";
+					updateST.executeUpdate(changeSQL);
+					changeSQL = "update googlemap set selected='here', times =0 where id=1;";
+					updateST.executeUpdate(changeSQL);
+				} else {
+					String changeSQL = "update googlemap set selected='', times =0 where id=" + id + ";";
+					updateST.executeUpdate(changeSQL);
+					changeSQL = "update googlemap set selected='here', times =0 where id=" + (id + 1) + ";";
+					updateST.executeUpdate(changeSQL);
+				}
+				getCountRS.close();
+			} else {
+				String changeSQL = "update googlemap set times =" + times + " where id=" + id + ";";
+				updateST.executeUpdate(changeSQL);
+			}
+		}
+		con.close();
+		selectST.close();
+		selectRS.close();
+		getCountST.close();
+		updateST.close();
+
+		return key;
 	}
 
 }

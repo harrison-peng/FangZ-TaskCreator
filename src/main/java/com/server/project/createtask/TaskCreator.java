@@ -1,7 +1,6 @@
 package com.server.project.createtask;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -95,7 +94,7 @@ public class TaskCreator {
 		return taskInfoList;
 	}
 
-	private TaskInfomation createTaskInRoad(String startAddress, String endAddress) throws IOException {
+	private TaskInfomation createTaskInRoad(String startAddress, String endAddress) throws Exception {
 		TaskInfomation taskInfo = new TaskInfomation();
 		Gson gson = new Gson();
 
