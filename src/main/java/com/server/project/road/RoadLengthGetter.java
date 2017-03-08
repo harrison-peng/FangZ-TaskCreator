@@ -55,7 +55,7 @@ public class RoadLengthGetter {
 		 * find end address
 		 */
 		System.out.println("start find end address");
-		for (int i = 500; i > 0; i--) {
+		for (int i = 700; i > 0; i--) {
 			if (i % 10 == 0) {
 				System.out.println("count end address No." + i);
 			}
