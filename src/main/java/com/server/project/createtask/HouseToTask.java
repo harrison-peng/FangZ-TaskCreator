@@ -82,10 +82,13 @@ public class HouseToTask {
 					}
 				}
 			}
-			String updateStartSQL = "update house set endNote='' where id=" + id + ";";
-			String updateEndSQL = "update house set endNote='here' where id=" + (id + 1) + ";";
+			if (id > 1) {
+				String updateStartSQL = "update house set endNote='done' where id=" + (id - 1) + ";";
+				selectST.executeUpdate(updateStartSQL);
+			}
+			String updateEndSQL = "update house set endNote='here' where id=" + id + ";";
 			System.out.println("finish create task");
-			selectST.executeUpdate(updateStartSQL + updateEndSQL);
+			selectST.executeUpdate(updateEndSQL);
 		} else {
 			String updateStartSQL = "update house set endNote='done' where id=" + (id - 1) + ";";
 			String updateEndSQL = "update house set endNote='here' where id=" + id + ";";
