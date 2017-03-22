@@ -87,7 +87,7 @@ public class HouseToTask {
 			System.out.println("finish create task");
 			selectST.executeUpdate(updateStartSQL + updateEndSQL);
 		} else {
-			String updateStartSQL = "update house set endNote='' where id=" + (id - 1) + ";";
+			String updateStartSQL = "update house set endNote='done' where id=" + (id - 1) + ";";
 			String updateEndSQL = "update house set endNote='here' where id=" + id + ";";
 			System.out.println("no need to crete task");
 			selectST.executeUpdate(updateStartSQL + updateEndSQL);

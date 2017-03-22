@@ -8,6 +8,8 @@ public class Application {
 		HouseToTask toTask = new HouseToTask();
 		TaskChecker taskChecker = new TaskChecker();
 		int id = taskChecker.checkWhereTaskStart();
-		toTask.toTask(id);
+		for (int indexId = id; indexId < 500; indexId++) {
+			toTask.toTask(id);
+		}
 	}
 }
