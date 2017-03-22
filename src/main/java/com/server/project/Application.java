@@ -9,7 +9,7 @@ public class Application {
 		TaskChecker taskChecker = new TaskChecker();
 		int id = taskChecker.checkWhereTaskStart();
 		for (int indexId = id; indexId < 500; indexId++) {
-			toTask.toTask(id);
+			toTask.toTask(indexId);
 		}
 	}
 }
