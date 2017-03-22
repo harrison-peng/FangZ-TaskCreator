@@ -7,9 +7,9 @@ public class Application {
 	public static void main(String[] args) throws Exception {
 		HouseToTask toTask = new HouseToTask();
 		TaskChecker taskChecker = new TaskChecker();
-		int id = taskChecker.checkWhereTaskStart();		
-//		for (int indexId = id; indexId < 500; indexId++) {
+		int id = taskChecker.checkWhereTaskStart();
+		for (int indexId = id; indexId < 500; indexId++) {
 			toTask.toTask(id);
-//		}
+		}
 	}
 }
