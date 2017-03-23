@@ -66,21 +66,25 @@ public class TaskCreator {
 				roadPath.getEndNumber());
 		System.out.println(laneList);
 
-		System.out.println("start get lane task");
 		List<List<String>> laneInfoList = new ArrayList<List<String>>();
-		for (String lane : laneList) {
-			List<String> laneInfo = new ArrayList<String>();
-			Road landPath = roadLengthGetter.getLaneLength(lane);
-			System.out.println(gson.toJson(landPath));
-			if (landPath.getStartNumber() != 0 && landPath.getEndNumber() != 0) {
-				String startAddr = landPath.getAddress() + landPath.getStartNumber() + "號";
-				laneInfo.add(startAddr);
-				String endAddr = landPath.getAddress() + landPath.getEndNumber() + "號";
-				laneInfo.add(endAddr);
-				laneInfoList.add(laneInfo);
-				TaskInfomation taskInfoByLane = createTaskInRoad(startAddr, endAddr);
-				taskInfoList.add(taskInfoByLane);
+		if (!laneList.isEmpty()) {
+			System.out.println("start get lane task");
+			for (String lane : laneList) {
+				List<String> laneInfo = new ArrayList<String>();
+				Road landPath = roadLengthGetter.getLaneLength(lane);
+				System.out.println(gson.toJson(landPath));
+				if (landPath.getStartNumber() != 0 && landPath.getEndNumber() != 0) {
+					String startAddr = landPath.getAddress() + landPath.getStartNumber() + "號";
+					laneInfo.add(startAddr);
+					String endAddr = landPath.getAddress() + landPath.getEndNumber() + "號";
+					laneInfo.add(endAddr);
+					laneInfoList.add(laneInfo);
+					TaskInfomation taskInfoByLane = createTaskInRoad(startAddr, endAddr);
+					taskInfoList.add(taskInfoByLane);
+				}
 			}
+		} else {
+			System.out.println("There is no any lane on this road!");
 		}
 
 		/**
