@@ -275,9 +275,9 @@ public class RoadLengthGetter {
 				break;
 
 			case 50:
-				System.out.println("start from 50");				
+				System.out.println("start from 50");
 				roadEndNum = 0;
-				ifContinue = false;			
+				ifContinue = false;
 				break;
 			default:
 				System.out.println("error");
@@ -334,7 +334,7 @@ public class RoadLengthGetter {
 		for (int i = startNum; i > (startNum - 10); i--) {
 			// connect to google map api
 			URL url = new URL("https://maps.googleapis.com/maps/api/geocode/json?address=" + address + i + "號&key="
-					+ GoogleMapApiKey.getKey());
+					+ GoogleMapApiKey.getKey());			
 			URLConnection conn = url.openConnection();
 			conn.setRequestProperty("user-agent", "Chrome/7.0.517.44");
 			conn.setRequestProperty("Content-Language", "zh-tw");

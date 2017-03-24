@@ -10,6 +10,6 @@ public class Application {
 		int id = taskChecker.checkWhereTaskStart();
 		for (int indexId = id; indexId < 500; indexId++) {
 			toTask.toTask(indexId);
-		}
+		}		
 	}
 }

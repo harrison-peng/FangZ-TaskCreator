@@ -30,22 +30,28 @@ public class RoadCutter {
 		if (endAddressNum <= 100) {
 			addressList.add(address + startAddressNum + "號");
 			addressList.add(address + endAddressNum + "號");
-		} else if (100 < endAddressNum && endAddressNum <= 200) {			
+		} else if (100 < endAddressNum && endAddressNum <= 200) {
 			addressList.add(address + startAddressNum + "號");
 
 			// for No.100
 			String insertAddress = getInsertAddress(address, 100);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 		} else if (200 < endAddressNum && endAddressNum <= 300) {
 			addressList.add(address + startAddressNum + "號");
 
 			// for No.100
 			String insertAddress = getInsertAddress(address, 100);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.200
 			insertAddress = getInsertAddress(address, 200);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			addressList.add(address + endAddressNum + "號");
 		} else if (300 < endAddressNum && endAddressNum <= 400) {
@@ -53,15 +59,21 @@ public class RoadCutter {
 
 			// for No.100
 			String insertAddress = getInsertAddress(address, 100);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.200
 			insertAddress = getInsertAddress(address, 200);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.300
 			insertAddress = getInsertAddress(address, 300);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			addressList.add(address + endAddressNum + "號");
 		} else if (400 < endAddressNum && endAddressNum <= 500) {
@@ -69,19 +81,27 @@ public class RoadCutter {
 
 			// for No.100
 			String insertAddress = getInsertAddress(address, 100);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.200
 			insertAddress = getInsertAddress(address, 200);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.300
 			insertAddress = getInsertAddress(address, 300);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.400
 			insertAddress = getInsertAddress(address, 400);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			addressList.add(address + endAddressNum + "號");
 		} else if (500 < endAddressNum && endAddressNum <= 600) {
@@ -89,23 +109,33 @@ public class RoadCutter {
 
 			// for No.100
 			String insertAddress = getInsertAddress(address, 100);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.200
 			insertAddress = getInsertAddress(address, 200);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.300
 			insertAddress = getInsertAddress(address, 300);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.400
 			insertAddress = getInsertAddress(address, 400);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.500
 			insertAddress = getInsertAddress(address, 500);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			addressList.add(address + endAddressNum + "號");
 		} else if (600 < endAddressNum && endAddressNum <= 700) {
@@ -113,27 +143,39 @@ public class RoadCutter {
 
 			// for No.100
 			String insertAddress = getInsertAddress(address, 100);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.200
 			insertAddress = getInsertAddress(address, 200);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.300
 			insertAddress = getInsertAddress(address, 300);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.400
 			insertAddress = getInsertAddress(address, 400);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.500
 			insertAddress = getInsertAddress(address, 500);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.600
 			insertAddress = getInsertAddress(address, 600);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			addressList.add(address + endAddressNum + "號");
 		} else if (700 < endAddressNum && endAddressNum <= 800) {
@@ -141,31 +183,45 @@ public class RoadCutter {
 
 			// for No.100
 			String insertAddress = getInsertAddress(address, 100);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.200
 			insertAddress = getInsertAddress(address, 200);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.300
 			insertAddress = getInsertAddress(address, 300);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.400
 			insertAddress = getInsertAddress(address, 400);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.500
 			insertAddress = getInsertAddress(address, 500);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.600
 			insertAddress = getInsertAddress(address, 600);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.700
 			insertAddress = getInsertAddress(address, 700);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			addressList.add(address + endAddressNum + "號");
 		} else if (800 < endAddressNum && endAddressNum <= 900) {
@@ -173,35 +229,51 @@ public class RoadCutter {
 
 			// for No.100
 			String insertAddress = getInsertAddress(address, 100);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.200
 			insertAddress = getInsertAddress(address, 200);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.300
 			insertAddress = getInsertAddress(address, 300);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.400
 			insertAddress = getInsertAddress(address, 400);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.500
 			insertAddress = getInsertAddress(address, 500);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.600
 			insertAddress = getInsertAddress(address, 600);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.700
 			insertAddress = getInsertAddress(address, 700);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.800
 			insertAddress = getInsertAddress(address, 800);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			addressList.add(address + endAddressNum + "號");
 		} else if (900 < endAddressNum && endAddressNum <= 1000) {
@@ -209,39 +281,57 @@ public class RoadCutter {
 
 			// for No.100
 			String insertAddress = getInsertAddress(address, 100);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.200
 			insertAddress = getInsertAddress(address, 200);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.300
 			insertAddress = getInsertAddress(address, 300);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.400
 			insertAddress = getInsertAddress(address, 400);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.500
 			insertAddress = getInsertAddress(address, 500);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.600
 			insertAddress = getInsertAddress(address, 600);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.700
 			insertAddress = getInsertAddress(address, 700);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.800
 			insertAddress = getInsertAddress(address, 800);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.900
 			insertAddress = getInsertAddress(address, 900);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			addressList.add(address + endAddressNum + "號");
 		} else {
@@ -249,43 +339,63 @@ public class RoadCutter {
 
 			// for No.100
 			String insertAddress = getInsertAddress(address, 100);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.200
 			insertAddress = getInsertAddress(address, 200);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.300
 			insertAddress = getInsertAddress(address, 300);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.400
 			insertAddress = getInsertAddress(address, 400);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.500
 			insertAddress = getInsertAddress(address, 500);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.600
 			insertAddress = getInsertAddress(address, 600);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.700
 			insertAddress = getInsertAddress(address, 700);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.800
 			insertAddress = getInsertAddress(address, 800);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.900
 			insertAddress = getInsertAddress(address, 900);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			// for No.1000
 			insertAddress = getInsertAddress(address, 1000);
-			addressList.add(insertAddress);
+			if (insertAddress != null) {
+				addressList.add(insertAddress);
+			}
 
 			addressList.add(address + endAddressNum + "號");
 		}
@@ -296,7 +406,7 @@ public class RoadCutter {
 		String addressInsert = null;
 		int addressNodeNum = 0;
 
-		for (int i = (addressNum + 1); i < (addressNum + 10); i++) {
+		for (int i = (addressNum + 1); i < (addressNum + 50); i++) {
 			URL url = new URL("https://maps.googleapis.com/maps/api/geocode/json?address=" + address + i + "號&key="
 					+ GoogleMapApiKey.getKey());
 			URLConnection conn = url.openConnection();

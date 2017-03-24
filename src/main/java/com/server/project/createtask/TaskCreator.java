@@ -104,6 +104,7 @@ public class TaskCreator {
 
 		String apiURL = "https://maps.googleapis.com/maps/api/directions/json?origin=" + startAddress + "&destination="
 				+ endAddress + "&mode=walking&key=" + GoogleMapApiKey.getKey();
+//		System.out.println(apiURL);
 		URL url = new URL(apiURL);
 		URLConnection conn = url.openConnection();
 		conn.setRequestProperty("user-agent", "Chrome/7.0.517.44");
