@@ -35,33 +35,37 @@ public class RoadLengthGetter {
 		 */
 		System.out.println("start find start address");
 		for (int j = 1; j < 30; j++) {
-			URL url = new URL("https://maps.googleapis.com/maps/api/geocode/json?address=" + address + j + "號&key="
-					+ GoogleMapApiKey.getKey());
-			URLConnection conn = url.openConnection();
-			conn.setRequestProperty("user-agent", "Chrome/7.0.517.44");
+			try {
+				URL url = new URL("https://maps.googleapis.com/maps/api/geocode/json?address=" + address + j + "號&key="
+						+ GoogleMapApiKey.getKey());
+				URLConnection conn = url.openConnection();
+				conn.setRequestProperty("user-agent", "Chrome/7.0.517.44");
 
-			InputStream in = conn.getInputStream();
-			BufferedReader br = new BufferedReader(new InputStreamReader(in, "utf-8"));
+				InputStream in = conn.getInputStream();
+				BufferedReader br = new BufferedReader(new InputStreamReader(in, "utf-8"));
 
-			// parse the HTML
-			String retVal = "";
-			String line = null;
-			while ((line = br.readLine()) != null) {
-				retVal = retVal + line + "\n";
-			}
-			Document doc = Jsoup.parse(retVal);
+				// parse the HTML
+				String retVal = "";
+				String line = null;
+				while ((line = br.readLine()) != null) {
+					retVal = retVal + line + "\n";
+				}
+				Document doc = Jsoup.parse(retVal);
 
-			// find geometry coordinate
-			String text = doc.text();
-			int index = text.indexOf("formatted_address");
-			String checkVal = text.substring(index + 26, index + 27);
-			if (checkVal.equals(String.valueOf(j))) {
-				road.setStartNumber(j);
-				break;
-			} else if (checkVal.equals("You")) {
+				// find geometry coordinate
+				String text = doc.text();
+				int index = text.indexOf("formatted_address");
+				String checkVal = text.substring(index + 26, index + 27);
+				if (checkVal.equals(String.valueOf(j))) {
+					road.setStartNumber(j);
+					break;
+				} else if (checkVal.equals("You")) {
+					j = j - 1;
+				}
+				TimeUnit.MILLISECONDS.sleep(100);
+			} catch (IOException e) {
 				j = j - 1;
 			}
-			TimeUnit.MILLISECONDS.sleep(100);
 		}
 
 		/**
@@ -157,41 +161,45 @@ public class RoadLengthGetter {
 
 		roadEndNum = roadEndNum + 100;
 		for (int i = roadEndNum; i > 0; i--) {
-			if (i % 10 == 0) {
-				System.out.println("count end address No." + i);
-			}
-			// connect to google map api
-			URL url = new URL("https://maps.googleapis.com/maps/api/geocode/json?address=" + address + i + "號&key="
-					+ GoogleMapApiKey.getKey());
-			URLConnection conn = url.openConnection();
-			conn.setRequestProperty("user-agent", "Chrome/7.0.517.44");
-			conn.setRequestProperty("Content-Language", "zh-tw");
-			conn.setRequestProperty("Accept-Charset", "UTF-8");
+			try {
+				if (i % 10 == 0) {
+					System.out.println("count end address No." + i);
+				}
+				// connect to google map api
+				URL url = new URL("https://maps.googleapis.com/maps/api/geocode/json?address=" + address + i + "號&key="
+						+ GoogleMapApiKey.getKey());
+				URLConnection conn = url.openConnection();
+				conn.setRequestProperty("user-agent", "Chrome/7.0.517.44");
+				conn.setRequestProperty("Content-Language", "zh-tw");
+				conn.setRequestProperty("Accept-Charset", "UTF-8");
 
-			InputStream in = conn.getInputStream();
-			BufferedReader br = new BufferedReader(new InputStreamReader(in, "utf-8"));
+				InputStream in = conn.getInputStream();
+				BufferedReader br = new BufferedReader(new InputStreamReader(in, "utf-8"));
 
-			// parse the HTML
-			String retVal = "";
-			String line = null;
-			while ((line = br.readLine()) != null) {
-				retVal = retVal + line + "\n";
-			}
-			Document doc = Jsoup.parse(retVal);
+				// parse the HTML
+				String retVal = "";
+				String line = null;
+				while ((line = br.readLine()) != null) {
+					retVal = retVal + line + "\n";
+				}
+				Document doc = Jsoup.parse(retVal);
 
-			// find geometry coordinate
-			String text = doc.text();
-			int startIndex = text.indexOf("formatted_address");
-			startIndex = startIndex + 26;
-			int endIndex = text.indexOf(",", startIndex);
-			String checkVal = text.substring(startIndex, endIndex);
-			if (checkVal.equals(String.valueOf(i))) {
-				road.setEndNumber(i);
-				break;
-			} else if (checkVal.equals("You")) {
+				// find geometry coordinate
+				String text = doc.text();
+				int startIndex = text.indexOf("formatted_address");
+				startIndex = startIndex + 26;
+				int endIndex = text.indexOf(",", startIndex);
+				String checkVal = text.substring(startIndex, endIndex);
+				if (checkVal.equals(String.valueOf(i))) {
+					road.setEndNumber(i);
+					break;
+				} else if (checkVal.equals("You")) {
+					i = i + 1;
+				}
+				TimeUnit.MILLISECONDS.sleep(100);
+			} catch (IOException e) {
 				i = i + 1;
 			}
-			TimeUnit.MILLISECONDS.sleep(100);
 		}
 
 		return road;
@@ -203,39 +211,43 @@ public class RoadLengthGetter {
 
 		// find start address
 		for (int i = 1; i < 10; i++) {
-			URL url = new URL("https://maps.googleapis.com/maps/api/geocode/json?address=" + address + i + "號&key="
-					+ GoogleMapApiKey.getKey());
-			URLConnection conn = url.openConnection();
-			conn.setRequestProperty("user-agent", "Chrome/7.0.517.44");
+			try {
+				URL url = new URL("https://maps.googleapis.com/maps/api/geocode/json?address=" + address + i + "號&key="
+						+ GoogleMapApiKey.getKey());
+				URLConnection conn = url.openConnection();
+				conn.setRequestProperty("user-agent", "Chrome/7.0.517.44");
 
-			InputStream in = conn.getInputStream();
-			BufferedReader br = new BufferedReader(new InputStreamReader(in, "utf-8"));
+				InputStream in = conn.getInputStream();
+				BufferedReader br = new BufferedReader(new InputStreamReader(in, "utf-8"));
 
-			// parse the HTML
-			String retVal = "";
-			String line = null;
-			while ((line = br.readLine()) != null) {
-				retVal = retVal + line + "\n";
-			}
-			Document doc = Jsoup.parse(retVal);
-			String text = doc.text();
-			int startIndex = text.indexOf("formatted_address");
-			startIndex = startIndex + 26;
-			int endIndex = text.indexOf(",", startIndex);
-			String checkVal = text.substring(startIndex, endIndex);
-			if (checkVal.equals(String.valueOf(i))) {
-				startIndex = text.indexOf("long_name");
-				startIndex = text.indexOf("long_name", startIndex + 1);
-				startIndex = startIndex + 14;
-				endIndex = text.indexOf(" ", startIndex);
-				checkVal = text.substring(startIndex, endIndex);
-				if (checkVal.equals("Lane")) {
-					road.setStartNumber(i);
-					break;
-				} else if (checkVal.contains("You")) {
-					i = i - 1;
+				// parse the HTML
+				String retVal = "";
+				String line = null;
+				while ((line = br.readLine()) != null) {
+					retVal = retVal + line + "\n";
 				}
-				TimeUnit.MILLISECONDS.sleep(100);
+				Document doc = Jsoup.parse(retVal);
+				String text = doc.text();
+				int startIndex = text.indexOf("formatted_address");
+				startIndex = startIndex + 26;
+				int endIndex = text.indexOf(",", startIndex);
+				String checkVal = text.substring(startIndex, endIndex);
+				if (checkVal.equals(String.valueOf(i))) {
+					startIndex = text.indexOf("long_name");
+					startIndex = text.indexOf("long_name", startIndex + 1);
+					startIndex = startIndex + 14;
+					endIndex = text.indexOf(" ", startIndex);
+					checkVal = text.substring(startIndex, endIndex);
+					if (checkVal.equals("Lane")) {
+						road.setStartNumber(i);
+						break;
+					} else if (checkVal.contains("You")) {
+						i = i - 1;
+					}
+					TimeUnit.MILLISECONDS.sleep(100);
+				}
+			} catch (IOException e) {
+				i = i - 1;
 			}
 		}
 
@@ -289,43 +301,47 @@ public class RoadLengthGetter {
 		// find end address
 		roadEndNum = roadEndNum + 50;
 		for (int i = roadEndNum; i > 10; i--) {
-			if (i % 10 == 0) {
-				System.out.println("count end lane No." + i);
-			}
-			TimeUnit.MILLISECONDS.sleep(100);
-			URL url = new URL("https://maps.googleapis.com/maps/api/geocode/json?address=" + address + i + "號&key="
-					+ GoogleMapApiKey.getKey());
-			URLConnection conn = url.openConnection();
-			conn.setRequestProperty("user-agent", "Chrome/7.0.517.44");
-
-			InputStream in = conn.getInputStream();
-			BufferedReader br = new BufferedReader(new InputStreamReader(in, "utf-8"));
-
-			// parse the HTML
-			String retVal = "";
-			String line = null;
-			while ((line = br.readLine()) != null) {
-				retVal = retVal + line + "\n";
-			}
-			Document doc = Jsoup.parse(retVal);
-			String text = doc.text();
-			int startIndex = text.indexOf("formatted_address");
-			startIndex = startIndex + 26;
-			int endIndex = text.indexOf(",", startIndex);
-			String checkVal = text.substring(startIndex, endIndex);
-			if (checkVal.equals(String.valueOf(i))) {
-				startIndex = text.indexOf("long_name");
-				startIndex = text.indexOf("long_name", startIndex + 1);
-				startIndex = startIndex + 14;
-				endIndex = text.indexOf(" ", startIndex);
-				checkVal = text.substring(startIndex, endIndex);
-				if (checkVal.equals("Lane")) {
-					road.setEndNumber(i);
-					break;
-				} else if (checkVal.contains("You")) {
-					i = i + 1;
+			try {
+				if (i % 10 == 0) {
+					System.out.println("count end lane No." + i);
 				}
 				TimeUnit.MILLISECONDS.sleep(100);
+				URL url = new URL("https://maps.googleapis.com/maps/api/geocode/json?address=" + address + i + "號&key="
+						+ GoogleMapApiKey.getKey());
+				URLConnection conn = url.openConnection();
+				conn.setRequestProperty("user-agent", "Chrome/7.0.517.44");
+
+				InputStream in = conn.getInputStream();
+				BufferedReader br = new BufferedReader(new InputStreamReader(in, "utf-8"));
+
+				// parse the HTML
+				String retVal = "";
+				String line = null;
+				while ((line = br.readLine()) != null) {
+					retVal = retVal + line + "\n";
+				}
+				Document doc = Jsoup.parse(retVal);
+				String text = doc.text();
+				int startIndex = text.indexOf("formatted_address");
+				startIndex = startIndex + 26;
+				int endIndex = text.indexOf(",", startIndex);
+				String checkVal = text.substring(startIndex, endIndex);
+				if (checkVal.equals(String.valueOf(i))) {
+					startIndex = text.indexOf("long_name");
+					startIndex = text.indexOf("long_name", startIndex + 1);
+					startIndex = startIndex + 14;
+					endIndex = text.indexOf(" ", startIndex);
+					checkVal = text.substring(startIndex, endIndex);
+					if (checkVal.equals("Lane")) {
+						road.setEndNumber(i);
+						break;
+					} else if (checkVal.contains("You")) {
+						i = i + 1;
+					}
+					TimeUnit.MILLISECONDS.sleep(100);
+				}
+			} catch (IOException e) {
+				i = i + 1;
 			}
 		}
 		return road;
