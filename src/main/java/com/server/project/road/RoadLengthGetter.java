@@ -1,6 +1,7 @@
 package com.server.project.road;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -332,80 +333,88 @@ public class RoadLengthGetter {
 
 	private boolean checkEndAddress(String address, int startNum) throws Exception {
 		for (int i = startNum; i > (startNum - 10); i--) {
-			// connect to google map api
-			URL url = new URL("https://maps.googleapis.com/maps/api/geocode/json?address=" + address + i + "號&key="
-					+ GoogleMapApiKey.getKey());			
-			URLConnection conn = url.openConnection();
-			conn.setRequestProperty("user-agent", "Chrome/7.0.517.44");
-			conn.setRequestProperty("Content-Language", "zh-tw");
-			conn.setRequestProperty("Accept-Charset", "UTF-8");
+			try {
+				// connect to google map api
+				URL url = new URL("https://maps.googleapis.com/maps/api/geocode/json?address=" + address + i + "號&key="
+						+ GoogleMapApiKey.getKey());
+				URLConnection conn = url.openConnection();
+				conn.setRequestProperty("user-agent", "Chrome/7.0.517.44");
+				conn.setRequestProperty("Content-Language", "zh-tw");
+				conn.setRequestProperty("Accept-Charset", "UTF-8");
 
-			InputStream in = conn.getInputStream();
-			BufferedReader br = new BufferedReader(new InputStreamReader(in, "utf-8"));
+				InputStream in = conn.getInputStream();
+				BufferedReader br = new BufferedReader(new InputStreamReader(in, "utf-8"));
 
-			// parse the HTML
-			String retVal = "";
-			String line = null;
-			while ((line = br.readLine()) != null) {
-				retVal = retVal + line + "\n";
-			}
-			Document doc = Jsoup.parse(retVal);
+				// parse the HTML
+				String retVal = "";
+				String line = null;
+				while ((line = br.readLine()) != null) {
+					retVal = retVal + line + "\n";
+				}
+				Document doc = Jsoup.parse(retVal);
 
-			// find geometry coordinate
-			String text = doc.text();
-			int startIndex = text.indexOf("formatted_address");
-			startIndex = startIndex + 26;
-			int endIndex = text.indexOf(",", startIndex);
-			String checkVal = text.substring(startIndex, endIndex);
-			if (checkVal.equals(String.valueOf(i))) {
-				System.out.println(
-						"find end address! end address is between No." + startNum + " and No." + (startNum + 100));
-				return false;
-			} else if (checkVal.equals("You")) {
+				// find geometry coordinate
+				String text = doc.text();
+				int startIndex = text.indexOf("formatted_address");
+				startIndex = startIndex + 26;
+				int endIndex = text.indexOf(",", startIndex);
+				String checkVal = text.substring(startIndex, endIndex);
+				if (checkVal.equals(String.valueOf(i))) {
+					System.out.println(
+							"find end address! end address is between No." + startNum + " and No." + (startNum + 100));
+					return false;
+				} else if (checkVal.equals("You")) {
+					i = i + 1;
+				}
+				TimeUnit.MILLISECONDS.sleep(100);
+			} catch (IOException e) {
 				i = i + 1;
 			}
-			TimeUnit.MILLISECONDS.sleep(100);
 		}
 		return true;
 	}
 
 	private boolean checkEndLaneAddress(String address, int startNum) throws Exception {
 		for (int i = startNum; i > (startNum - 10); i--) {
-			TimeUnit.MILLISECONDS.sleep(100);
-			URL url = new URL("https://maps.googleapis.com/maps/api/geocode/json?address=" + address + i + "號&key="
-					+ GoogleMapApiKey.getKey());
-			URLConnection conn = url.openConnection();
-			conn.setRequestProperty("user-agent", "Chrome/7.0.517.44");
-
-			InputStream in = conn.getInputStream();
-			BufferedReader br = new BufferedReader(new InputStreamReader(in, "utf-8"));
-
-			// parse the HTML
-			String retVal = "";
-			String line = null;
-			while ((line = br.readLine()) != null) {
-				retVal = retVal + line + "\n";
-			}
-			Document doc = Jsoup.parse(retVal);
-			String text = doc.text();
-			int startIndex = text.indexOf("formatted_address");
-			startIndex = startIndex + 26;
-			int endIndex = text.indexOf(",", startIndex);
-			String checkVal = text.substring(startIndex, endIndex);
-			if (checkVal.equals(String.valueOf(i))) {
-				startIndex = text.indexOf("long_name");
-				startIndex = text.indexOf("long_name", startIndex + 1);
-				startIndex = startIndex + 14;
-				endIndex = text.indexOf(" ", startIndex);
-				checkVal = text.substring(startIndex, endIndex);
-				if (checkVal.equals("Lane")) {
-					System.out.println(
-							"find end address! end address is between No." + startNum + " and No." + (startNum + 50));
-					return false;
-				} else if (checkVal.contains("You")) {
-					i = i + 1;
-				}
+			try {
 				TimeUnit.MILLISECONDS.sleep(100);
+				URL url = new URL("https://maps.googleapis.com/maps/api/geocode/json?address=" + address + i + "號&key="
+						+ GoogleMapApiKey.getKey());
+				URLConnection conn = url.openConnection();
+				conn.setRequestProperty("user-agent", "Chrome/7.0.517.44");
+
+				InputStream in = conn.getInputStream();
+				BufferedReader br = new BufferedReader(new InputStreamReader(in, "utf-8"));
+
+				// parse the HTML
+				String retVal = "";
+				String line = null;
+				while ((line = br.readLine()) != null) {
+					retVal = retVal + line + "\n";
+				}
+				Document doc = Jsoup.parse(retVal);
+				String text = doc.text();
+				int startIndex = text.indexOf("formatted_address");
+				startIndex = startIndex + 26;
+				int endIndex = text.indexOf(",", startIndex);
+				String checkVal = text.substring(startIndex, endIndex);
+				if (checkVal.equals(String.valueOf(i))) {
+					startIndex = text.indexOf("long_name");
+					startIndex = text.indexOf("long_name", startIndex + 1);
+					startIndex = startIndex + 14;
+					endIndex = text.indexOf(" ", startIndex);
+					checkVal = text.substring(startIndex, endIndex);
+					if (checkVal.equals("Lane")) {
+						System.out.println("find end address! end address is between No." + startNum + " and No."
+								+ (startNum + 50));
+						return false;
+					} else if (checkVal.contains("You")) {
+						i = i + 1;
+					}
+					TimeUnit.MILLISECONDS.sleep(100);
+				}
+			} catch (IOException e) {
+				i = i + 1;
 			}
 		}
 
