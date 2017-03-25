@@ -348,7 +348,7 @@ public class RoadLengthGetter {
 	}
 
 	private boolean checkEndAddress(String address, int startNum) throws Exception {
-		for (int i = startNum; i > (startNum - 10); i--) {
+		for (int i = (startNum + 10); i > startNum; i--) {
 			try {
 				// connect to google map api
 				URL url = new URL("https://maps.googleapis.com/maps/api/geocode/json?address=" + address + i + "號&key="
@@ -391,7 +391,7 @@ public class RoadLengthGetter {
 	}
 
 	private boolean checkEndLaneAddress(String address, int startNum) throws Exception {
-		for (int i = startNum; i > (startNum - 10); i--) {
+		for (int i = (startNum + 10); i > startNum; i--) {
 			try {
 				TimeUnit.MILLISECONDS.sleep(100);
 				URL url = new URL("https://maps.googleapis.com/maps/api/geocode/json?address=" + address + i + "號&key="

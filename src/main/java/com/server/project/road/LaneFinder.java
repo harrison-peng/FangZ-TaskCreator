@@ -25,6 +25,9 @@ public class LaneFinder {
 				}
 				URL url = new URL("https://maps.googleapis.com/maps/api/geocode/json?address=" + address + i + "巷&key="
 						+ GoogleMapApiKey.getKey());
+				if (i % 100 == 0) {
+					System.out.println(url);
+				}
 				URLConnection conn = url.openConnection();
 				conn.setRequestProperty("user-agent", "Chrome/7.0.517.44");
 				InputStream in = conn.getInputStream();

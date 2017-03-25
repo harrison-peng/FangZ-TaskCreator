@@ -19,6 +19,7 @@ public class RoadSaver {
 		String endAddr = address + endNum + "號";
 		String insertSQL = "insert into road (name, lane, start_address, end_address) values ('" + address + "', '"
 				+ laneStr + "', '" + startAddr + "', '" + endAddr + "');";
+		System.out.println(insertSQL);
 		insertST.executeUpdate(insertSQL);
 		insertST.close();
 		con.close();

@@ -104,7 +104,7 @@ public class TaskCreator {
 
 		String apiURL = "https://maps.googleapis.com/maps/api/directions/json?origin=" + startAddress + "&destination="
 				+ endAddress + "&mode=walking&key=" + GoogleMapApiKey.getKey();
-//		System.out.println(apiURL);
+		System.out.println("create task URL: " + apiURL);
 		URL url = new URL(apiURL);
 		URLConnection conn = url.openConnection();
 		conn.setRequestProperty("user-agent", "Chrome/7.0.517.44");
@@ -162,6 +162,7 @@ public class TaskCreator {
 		String duration = text.substring(durStartIndex + 9, durEndIndex - 1);
 		taskInfo.setDuration(duration);
 
+		System.out.println("Task infomation: " + gson.toJson(taskInfo));
 		return taskInfo;
 	}
 }
