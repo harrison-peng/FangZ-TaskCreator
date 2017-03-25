@@ -150,7 +150,8 @@ public class RoadLengthGetter {
 
 			case 100:
 				System.out.println("start from 100");
-				ifContinue = checkEndAddress(address, 100);
+				roadEndNum = 0;
+				ifContinue = false;
 				break;
 
 			default:
