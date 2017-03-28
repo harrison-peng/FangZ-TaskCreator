@@ -53,6 +53,7 @@ public class LaneFinder {
 				TimeUnit.MILLISECONDS.sleep(100);
 			} catch (IOException e) {
 				i = i - 1;
+				Thread.sleep(3000);
 			}
 		}
 		return laneList;

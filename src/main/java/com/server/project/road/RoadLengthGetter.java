@@ -64,7 +64,7 @@ public class RoadLengthGetter {
 				}
 				TimeUnit.MILLISECONDS.sleep(100);
 			} catch (IOException e) {
-				j = j - 1;
+				System.out.println("IOException on No." + j);
 			}
 		}
 
@@ -199,7 +199,7 @@ public class RoadLengthGetter {
 				}
 				TimeUnit.MILLISECONDS.sleep(100);
 			} catch (IOException e) {
-				i = i + 1;
+				System.out.println("IOException on No." + i);
 			}
 		}
 
@@ -248,7 +248,7 @@ public class RoadLengthGetter {
 					TimeUnit.MILLISECONDS.sleep(100);
 				}
 			} catch (IOException e) {
-				i = i - 1;
+				System.out.println("IOException on No." + i);
 			}
 		}
 
@@ -342,7 +342,7 @@ public class RoadLengthGetter {
 					TimeUnit.MILLISECONDS.sleep(100);
 				}
 			} catch (IOException e) {
-				i = i + 1;
+				System.out.println("IOException on No." + i);
 			}
 		}
 		return road;
@@ -385,7 +385,7 @@ public class RoadLengthGetter {
 				}
 				TimeUnit.MILLISECONDS.sleep(100);
 			} catch (IOException e) {
-				i = i + 1;
+				System.out.println("IOException on No." + i);
 			}
 		}
 		return true;
@@ -431,7 +431,7 @@ public class RoadLengthGetter {
 					TimeUnit.MILLISECONDS.sleep(100);
 				}
 			} catch (IOException e) {
-				i = i + 1;
+				System.out.println("IOException on No." + i);
 			}
 		}
 
