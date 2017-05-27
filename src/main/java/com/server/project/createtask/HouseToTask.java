@@ -10,7 +10,7 @@ import com.server.project.api.TaskInfomation;
 public class HouseToTask {
 	public static void main(String[] args) throws Exception {
 		HouseToTask htu = new HouseToTask();
-		htu.toTask(2);
+		htu.toTask(50);
 
 		// boolean reVal = htu.checkTask(2);
 		// System.out.println(reVal);
